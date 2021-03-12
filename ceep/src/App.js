@@ -14,23 +14,25 @@ class App extends Component {
   }
 
   criarNota(titulo, texto){
-    console.log("app.js " + "pega o titulo e o texto pelo props criarNota")
     const novaNota = {titulo, texto}
     const novoarrayNotas = [...this.state.notas, novaNota]
-    console.log("app.js " + "cria um novo array para add no setStates" + novoarrayNotas)
     const novoEstado = {
       notas: novoarrayNotas
     }
     this.setState(novoEstado)
-    console.log("app.js " + "seta um novo estado" + novoEstado)
+  }
+
+  deletarNota(indice) {
+    let arrayNotas = this.state.notas
+    arrayNotas.splice(indice,1)
+    this.setState({notas: arrayNotas})
   }
 
   render() {
-    console.log("app.js " + "<ListaDeNotas notas={this.state.notas}/>" + this.state.notas)
     return (
       <section className="conteudo">
         <FormularioCadastro criarNota={this.criarNota.bind(this)}/>
-        <ListaDeNotas notas={this.state.notas}/>
+        <ListaDeNotas apagarNotadaLista={this.deletarNota.bind(this)} notas={this.state.notas}/>
       </section>
     );
   }

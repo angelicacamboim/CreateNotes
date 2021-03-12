@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import "./estilo.css";
 class FormularioCadastro extends Component {
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.title = "";
     this.text = "";
   }
@@ -24,7 +24,6 @@ class FormularioCadastro extends Component {
     evento.preventDefault();
     evento.stopPropagation();
     this.props.criarNota(this.title, this.text)
-    console.log("FormularioCadastro.jsx " + "Ação do form criando o props.criarNota e add valores:" + this.title + this.text)
   }
 
   render() {
